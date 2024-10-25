@@ -6,7 +6,7 @@
 #    By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 11:19:48 by ggoncalv          #+#    #+#              #
-#    Updated: 2024/10/25 14:21:54 by ggoncalv         ###   ########.fr        #
+#    Updated: 2024/10/25 20:04:50 by ggoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ NAME_TEST = libft_test
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_strlen.c ft_isprint.c ft_memset.c ft_memmove.c ft_strlcpy.c
+SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c
 OBJ = $(SRC:.c=.o)
 
 #TEST___________________________________________________________________________________
-SRC_TEST =  ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_strlen.c ft_isprint.c ft_memset.c ft_memmove.c ft_strlcpy.c main.c
+SRC_TEST =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c main.c
 OBJ_TEST = $(SRC_TEST:.c=.o)
 #______________________________________________________________________________________________
 

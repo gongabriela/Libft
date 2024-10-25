@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:04:30 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/10/25 14:23:04 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:04:48 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 #include <string.h>
 
-int	ft_isdigit(int c);
-int	ft_isascii(int c);
-int	ft_isalnum(char c);
 int	ft_isalpha(int c);
+int	ft_isdigit(int c);
+int	ft_isalnum(char c);
+int	ft_isascii(int c);
+
 int	ft_strlen(char *str);
 int	ft_isprint(int c);
 void	*ft_memset(void *str, int c, size_t n);

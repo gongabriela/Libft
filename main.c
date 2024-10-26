@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:30:04 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/10/25 20:06:22 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:14:10 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	main(void)
 
 int	main(void)
 {
-	char c = 128;
-	printf("is %c a printable character?\nThe original function says %d\nMy function says %d", c, isprint(c), ft_isprint(c));
+	int c = 32;
+	printf("is %d a printable character?\nThe original function says %d\nMy function says %d", c, isprint(c), ft_isprint(c));
 	return (0);
 }*/
 
@@ -82,8 +82,32 @@ int	main(void)
 
 int	main(void)
 {
-	char	str[] = "";
-	printf("What iis the length of this string: %s?\nThe original function says %d\nMy function says %d", str, strlen(str), ft_strlen(str));
+	char	str[50] = "";
+	printf("What is the length of this string: %s?\nThe original function says %lu\nMy function says %d", str, strlen(str), ft_strlen(str));
 	return (0);
 }*/
+
+//ft_memset___________________________________________________________________________________
+//pedir testes pro chat
+#include <stdio.h>
+#include <string.h>
+
+void test_zero_initialization() {
+    char buffer[10];
+    my_memset(buffer, 0, sizeof(buffer));
+    
+    // Check if all bytes are zero
+    for (int i = 0; i < sizeof(buffer); i++) {
+        if (buffer[i] != 0) {
+            printf("Zero initialization test failed!\n");
+            return;
+        }
+    }
+    printf("Zero initialization test passed.\n");
+}
+
+int	main(void)
+{
+	return (0);
+}
 

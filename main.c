@@ -51,7 +51,7 @@ int	main(void)
 	return (0);
 }*/
 
-//ft_isascii_________________________________________________________________________
+/*//ft_isascii_________________________________________________________________________
 
 #include <stdio.h>
 #include <ctype.h>
@@ -61,4 +61,29 @@ int	main(void)
 	int	c = 127;
 	printf("Is %d an ASCII character?\nThe original function says %d\nMy function says %d", c, isascii(c), ft_isascii(c));
 	return (0);
-}
+}*/
+
+/*//ft_isprint____________________________________________________________________________
+
+#include <stdio.h>
+#include<ctype.h>
+
+int	main(void)
+{
+	char c = 128;
+	printf("is %c a printable character?\nThe original function says %d\nMy function says %d", c, isprint(c), ft_isprint(c));
+	return (0);
+}*/
+
+/*//ft_strlen_______________________________________________________________________________
+
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[] = "";
+	printf("What iis the length of this string: %s?\nThe original function says %d\nMy function says %d", str, strlen(str), ft_strlen(str));
+	return (0);
+}*/
+

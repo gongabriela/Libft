@@ -16,11 +16,11 @@ NAME_TEST = libft_test
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c
+SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c
 OBJ = $(SRC:.c=.o)
 
 #TEST___________________________________________________________________________________
-SRC_TEST =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c main.c
+SRC_TEST =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c main.c
 OBJ_TEST = $(SRC_TEST:.c=.o)
 #______________________________________________________________________________________________
 

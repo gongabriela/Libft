@@ -6,11 +6,11 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:23:23 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/10/26 17:14:13 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:54:47 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 

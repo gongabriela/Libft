@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:30:04 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/10/31 17:16:21 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:35:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,7 +337,7 @@ int	main(void)
 //passar a norminette: calloc | substr | strnstr
 //failed tests: memcpy | strnstr | calloc | memmove
 
-//ft_substr__________________________________________________________-
+/*//ft_substr__________________________________________________________-
 
 #include <stdio.h>
 #include "libft.h"
@@ -347,4 +347,32 @@ int	main(void)
 	char source[] = "12345Gabriela";
 	printf("%s", ft_substr(source, 5, 0));
 	return(0);
-}
+}*/
+
+/*//ft_strjoin____________________________________________________________________
+
+#include <stdio.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char s1[] = "Gabriela";
+	char s2[] = " Oliveira";
+	printf("%s", ft_strjoin(s1, s2));
+	return(0);
+}*/
+
+//ft_strtrim________________________________________________________________________
+
+#include <stdio.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char s1[] = "abGabiab";
+	char set[] = "ab";
+	printf("%s", ft_strtrim(s1, set));
+	return (0);
+}i = 2;
+k = 5
+s1 = 8index

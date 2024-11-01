@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:43:39 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/10/31 19:32:51 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/01 08:57:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 			*d++ = *s++;
 			n--;
 		}
-	return (dst);
-}*/
+	return (dst);*/
+}

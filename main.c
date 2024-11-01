@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:30:04 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/01 11:35:03 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/01 18:42:04 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,17 +362,33 @@ int	main(void)
 	return(0);
 }*/
 
-//ft_strtrim________________________________________________________________________
+/*//ft_strtrim________________________________________________________________________
+
+#include <stdio.h>
+#include "libft.h"
+#include <string.h>
+
+int	main(void)
+{
+	//char s1[] = "aababbGabiabbba";
+	//char set[] = "ab";
+	printf("%s", ft_strtrim("ab cd  f    ", " "));
+	return (0);
+}*/
+
+//ft_split___________________________________________________________-
 
 #include <stdio.h>
 #include "libft.h"
 
 int	main(void)
 {
-	char s1[] = "abGabiab";
-	char set[] = "ab";
-	printf("%s", ft_strtrim(s1, set));
+	char str[] = "Gabriela Goncalves de Oliveira";
+	char **result = ft_split(str, ' ');
+	int	count = ft_strlen(*result);
+	for (int i = 0; i < count; i++)
+	{
+		printf("%s\n", result[i]);
+	}
 	return (0);
-}i = 2;
-k = 5
-s1 = 8index
+}

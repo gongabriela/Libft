@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:30:04 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/01 18:42:04 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:44:00 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,10 +385,11 @@ int	main(void)
 {
 	char str[] = "Gabriela Goncalves de Oliveira";
 	char **result = ft_split(str, ' ');
-	int	count = ft_strlen(*result);
-	for (int i = 0; i < count; i++)
+	int	i = 0;
+	while (i < 4)
 	{
 		printf("%s\n", result[i]);
+		i++;
 	}
 	return (0);
 }

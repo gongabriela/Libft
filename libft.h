@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:04:30 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/04 10:45:32 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:53:25 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
+char *ft_itoa(int n);
 
 #endif

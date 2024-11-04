@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:17:44 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/03 18:19:25 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:00:13 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n < 0)
 	{
 		n = -n;
-		write (1, "-", 1);
+		write (fd, "-", 1);
 	}
 	while (n > 9)
 	{

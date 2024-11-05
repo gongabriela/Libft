@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 12:23:23 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/05 11:34:41 by ggoncalv         ###   ########.fr       */
+/*   Created: 2024/11/05 11:44:20 by ggoncalv          #+#    #+#             */
+/*   Updated: 2024/11/05 11:47:22 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+void    ft_striteri(char *s, void(*f)(unsigned int, char*))
 {
-	unsigned int	i;
+    int i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+    i = 0;
+    if (s[i] == '\0')
+        return(s);
+    while (s[i] != '\0')
+    {
+        (*f)(i, s[i]);
+        i++;
+    }
 }

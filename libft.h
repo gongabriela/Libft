@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:04:30 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/04 16:53:25 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:47:38 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 char *ft_itoa(int n);
+char    *ft_strmapi(const char *s, char(*f)(unsigned int, char));
+void    ft_striteri(char *s, void(*f)(unsigned int, char*));
 
 #endif

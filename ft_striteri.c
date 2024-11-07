@@ -6,20 +6,18 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:44:20 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/05 11:47:22 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:56:08 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_striteri(char *s, void(*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (s[i] == '\0')
-        return(s);
-    while (s[i] != '\0')
-    {
-        (*f)(i, s[i]);
-        i++;
-    }
+	i = 0;
+	while (s[i] != '\0')
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
 }

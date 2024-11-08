@@ -6,11 +6,11 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:09:24 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/04 12:04:01 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:06:15 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

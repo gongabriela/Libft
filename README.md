@@ -3,7 +3,7 @@
 # Libft: creating your own C library
 
 ## Introduction
-Libft is a custom implementation of essential C library functions. This project is part of the 42 curriculum and serves as a foundation for future projects, reinforcing fundamental programming skills such as memory management, string manipulation, and linked lists. By re-recreating these functions, we can understand how our code works on a deeper level, allowing us to pinpoint the errors and bugs faster and make better and optimal decisions when it comes to the architecture of our code! 
+Libft is a custom implementation of essential C library functions. This project is part of the 42 curriculum and serves as a foundation for future projects, reinforcing fundamental programming skills such as memory management, string manipulation, and linked lists. By recreating these functions, we gain a deeper understanding of how our code works, allowing us to pinpoint errors and bugs faster and make better, more optimal decisions regarding code architecture.
 
 ## Implemented Functions
 Libft includes the recreation of several standard functions from `<ctype.h>`, `<string.h>`, `<stdlib.h>`, and `<stdio.h>`, along with additional utility functions. Some of the key implementations include:
@@ -13,45 +13,143 @@ Libft includes the recreation of several standard functions from `<ctype.h>`, `<
 - **Character checking & conversion:** `ft_isalpha`, `ft_isdigit`, `ft_isalnum`, `ft_isascii`, `ft_isprint`, `ft_toupper`, `ft_tolower`
 - **Linked lists:** `ft_lstnew`, `ft_lstadd_front`, `ft_lstadd_back`, `ft_lstsize`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
 
-In order to recreate these functions and complete other mandatory guidelines for this project, I had to learn some new concepts. If you are a 42 student trying to complete this project, I have created a summary of the materials I found online to help me understand these concepts better. I hope this can help you on your own journey of completing the Libft project! 
+To recreate these functions and meet the mandatory guidelines for this project, I had to learn several new concepts. If you're a 42 student working on this project, I’ve compiled a summary of the materials I found online that helped me understand these concepts better. I hope this can assist you on your journey to completing the Libft project! 
 
 ## Makefile
-When we are writing code in C, we are writing it in what we call human-readable source code - a language that we can understand. But, can the computer read and understand the C programming language in order to execute the program that we have created? The answer is no. We need to 'translate' this code to a machine-readable code - binary instructions that the computer can execute. 
+When writing code in C, we create human-readable source code—a language we can understand. However, computers cannot directly read and execute C code. We must first compile it into machine-readable code—binary instructions that the computer can process.
 
-You already learned during the piscine how to compile using the ggc -c in the command line. This produces an executable file, that we know by default as the ./a.out in the piscine. So far, our programs have been fairly simple, with one file or two needed to write the program, so it is not that inconvenient to write the whole command on the terminal. But what if we were working on a bigger project, with multiple files and directories? What if we have to perform multiple steps in order to produce our executable? How much time would we lose, if every time we change something in one of the files we have to re-compile everything all over again, manually?
+During the piscine, you learned how to compile C programs using `gcc -c` in the command line, producing an executable file (by default, `./a.out`). So far, our programs have been fairly simple, usually consisting of only one or two files, making it manageable to write the entire compilation command manually. But what if we were working on a larger project with multiple files and directories? What if our build process involved multiple steps? How much time would we waste if we had to manually recompile everything every time we modified a single file?
 
-To resolve this problem, Makefiles were created!
+To solve this problem, Makefiles were created!
 
-A Makefile is here to resolve two main problems that manual compilation has: it automates the compilation and build process of a given project, and it also ensures efficiency by only recompiling files that have changed since the last compilation. This can be done thanks to a build automation tool called **make**.
-   
-### The structure of a Makefile
+A Makefile addresses two major issues with manual compilation:
 
-A Makefile is composed of rules, targets, variables, dependencies, and commands. All of this is written in Shell (yes, like Shell00 and Shell01 from the piscine. No, you will not get rid of Shell, it will only get worse from here on lol). Let's break down each one of them:
+1. It automates the compilation and build process.
+2. It ensures efficiency by recompiling only the files that have changed since the last compilation.
+
+This is made possible by a build automation tool called `make`.
 
 #### **Variables:** 
 
-Working like the variables we use in C, they help avoid repetition and make the Makefile more maintainable. For example, we always have to use the -Wall -Wextra -Werror flags, right? So, instead of having to have all this written down, we can define a variable, and when we need to write all those flags down, we will just need to write the name of the variable. If, for some reason, the flags change, we don't need to correct every line that it is written - just in the variable definition.
-To define a variable, it is best practice to do it at the beginning of our file. For this specific example, we would do CFLAGS = -Wall -Wextra -Werror, and when we need to use it we write it as $(CFLAGS).
+Similar to variables in C, variables in a Makefile help avoid repetition and make the file more maintainable. For example, we frequently use the `-Wall -Wextra -Werror` flags. Instead of writing them out every time, we can define a variable:
+
+```make
+CFLAGS = -Wall -Wextra -Werror
+```
+Whenever we need to use these flags, we simply reference the variable:
+
+```make
+$(CFLAGS)
+```
+
+If we ever need to modify the flags, we only have to change them in one place, rather than updating multiple lines in the Makefile.
 
 #### **Rules:**
 
+Rules define how the project should be built. Each rule consists of three parts:
 
-#### **Targets:**
+```make
+target: dependencies
+   commands
+```
 
+#### **Targets**
 
-#### **Dependencies:**
+A target is usually the name of a file to be generated (such as an executable or an object file). However, it can also be a phony target—a rule that doesn’t produce an actual file, like `clean` or `all`.
 
+#### **Dependencies**
+
+Dependencies (or prerequisites) are files or targets that must be created or updated before the current target can be built. If any dependency is newer than the target, the associated commands are executed.
+
+#### **Commands**
+
+Commands are the shell instructions that tell `make` how to build the target from its dependencies. Each command must start with a tab character—not spaces.
+
+### **Example:**
+
+```make
+NAME = libft.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+SRC = main.c
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+```
+
+Let’s break this down:
+
+#### **Variables:**
+
+- `NAME`: Defines the name of the compiled library (libft.a).
+
+- `CC`: Specifies the compiler (cc).
+
+- `CFLAGS`: Stores the compilation flags for warnings (-Wall -Wextra -Werror).
+
+- `SRC`: Holds the names of all .c source files.
+
+- `OBJ`: Converts SRC filenames into their corresponding .o object files.
+
+Using variables helps keep the Makefile organized. If we add a new source file, we only need to update SRC, making maintenance easier.
+
+#### **Rules:**
+
+- `all`: The default rule. If no specific rule is specified, make runs the first rule in the file—typically all. This rule depends on $(NAME), so `make` moves on to that target.
+
+- `$(NAME)`: Builds the library by archiving the object files (`$(OBJ)`) into `libft.a`.
+
+- `clean`: Removes object files (`rm -rf $(OBJ)`).
+
+- `fclean`: Calls `clean`, then removes `libft.a`.
+
+- `re`: Calls `fclean` and then rebuilds everything from scratch (`all`).
+
+#### **Understanding Makefile Execution**
+
+If you simply run `make`, it executes the first rule (`all`).
+
+`all` depends on `$(NAME)`, so make moves to `$(NAME)`.
+
+`$(NAME)` depends on `$(OBJ)`, so make ensures that all .o files are up-to-date.
+
+Once `$(OBJ)` is built, the archiving command (`ar rcs $(NAME) $(OBJ)`) is executed.
+
+Finally, `make` returns to `all`, completing the build process.
 
 ### Tips to create the Makefile for Libft:
 
 Let's review what the subject guidelines are for our Makefile (at least, they are this way in February 2025):
 
-1. If the subject requires it, you must submit a Makefile which will compile your source files to the required output with the flags -Wall -Wextra and -Werror, use cc, and your Makefile must not relink.
-2. Your Makefile must at least contain the rules $(NAME), all, clean, fclean and re.
-3. If your project allows you to use your libft, you must copy its sources and its associated Makefile in a libft folder with its associated Makefile. Your project’s Makefile must compile the library by using its Makefile, then compile the project.
-4. You must use the command ar to create your library. Using the libtool command is forbidden.
-5. Your libft.a has to be created at the root of your repository.
+`If the subject requires it, you must submit a Makefile which will compile your source files to the required output with the flags -Wall -Wextra and -Werror, use cc, and your Makefile must not relink.`
 
+- "must not relink" means that your Makefile should avoid unnecessary recompilation of the executable if no source files have changed. This ensures efficient compilation by not rebuilding the entire project unless needed. If you are building the rules correctly. it won't relink!
+
+`Your Makefile must at least contain the rules $(NAME), all, clean, fclean and re.`
+
+- Those are the same rules that I used in my example...
+
+`You must use the command ar to create your library. Using the libtool command is forbidden.`
+
+- The final goal of this project is to create a static library. If we were allowed to use `libtool`, the process of creating one would be fairly easy. They want us to do as many things manually as possible. So, the alternative to libtool is the `ar` command, as I showed in the example. 
+
+
+`Your libft.a has to be created at the root of your repository.`
+
+- this one is fairly self-explanatory!
+
+I hope that this Makefile file was useful for you to understand how to create a Makefile, which is an important step if you want to create your own static library. Now, another crucial file is the .h file, which I will explain further below!
 
 ## .h files
 

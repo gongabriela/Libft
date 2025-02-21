@@ -151,7 +151,49 @@ Let's review what the subject guidelines are for our Makefile (at least, they ar
 
 I hope that this Makefile file was useful for you to understand how to create a Makefile, which is an important step if you want to create your own static library. Now, another crucial file is the .h file, which I will explain further below!
 
-## .h files
+## Header files (.h)
+
+So far, we have learned how to compile all the .c files of our library into `.a` static library file. So, when we are working on another project, we can use the functions that we have implemented in our libft. To use the Libft in another project, we have to perform two tasks. One is linking the .a file with the files of our project when producing the executable, like this:
+
+```make
+gcc project.c mylib.a -o project_exec
+```
+
+The other step is creating a Header file. 
+
+In C, header files (.h files) are used to declare functions, macros, global variables, and, in C++, classes. They allow multiple source files (.c files) to share common declarations, making code more organized, reusable, and less redundant.
+
+For example, when working on a project that uses the libft functions, instead of manually adding all function declarations to every file where they are needed, we can create a header file that contains these declarations. By including this header file in our source files using the preprocessor directive (#include "yourheadername.h"), the compiler can recognize the function prototypes without requiring them to be rewritten in every file. This simplifies project management and ensures consistency across the codebase.
+
+### **About preprocessors**
+
+A preprocessor directive is a command that starts with # and is processed before compilation by the C preprocessor (CPP). These directives do not produce machine code but instead modify the source code before it is compiled.
+
+There are different types of preprocessor directives, but the ones we will focus on here are:
+
+#### **File Includes**
+- Includes header files in your program. You have already done this often when putting the `#include <unistd.h>` at the top of your files to use the write() function, for example. To use your custom library, it's the same, except the syntax will be with "" and not <>: `#include "libft.h"`. The angle brackets (<>) tell the compiler to search for the header file in system directories. The quotes ("") tell the compiler to look in the current project directory first, which is where the folder of Libft will be!
+
+### **Macro definition**
+- The `#define` directive creates constants or macros to replace text in the source code.
+- Example: if I am doing a mathematical calculation and I am constantly using the value of PI, I can create a macro definition on my header file: `#define PI 3.14159`.
+- We can even create functions like `#define SQUARE(x) ((x) * (x))` as macros!
+- It is a very useful tool to make our code more organized and less cluttered.
+
+### **Conditional compilation**
+- We will focus on #ifndef and #endif, as these are crucial for Libft. However, there are other directives you can explore!
+- The `#ifndef, #endif` are called include guards, and they prevent multiple inclusions of the same header file. If you accidentally include libft.h twice in a file, the compiler would normally process it twice, causing errors. Include guards prevent this by ensuring the file is included only once. Here is how to use them:
+
+   ```make
+   #ifndef MYLIB_H
+   #define MYLIB_H
+
+  void myFunction();
+
+  #endif
+  ```
+
+Now, I am going to focus in topics that I had to learn in more depth to create some of the functions of libft. I hope that this is being helpful to you so far!
 
 ## File descriptors
 

@@ -197,6 +197,57 @@ Now, I am going to focus in topics that I had to learn in more depth to create s
 
 ## File descriptors
 
+For the functions that end with "fd", you will have to learn to use file descriptors. This knowledge will also be very useful for one of the next projects, 'get_next_line'!
+
+This topic can become very complex if we keep going deeper and deeper, so what I am going to do here is to try to explain it as simply as possible for you to be able to use them to complete this project. After that, it is up to you if you want to research this topic further (which I recommend)!
+
+### `**A simple explanation of file descriptors**`
+
+Imagine you walk into a big library and want to read a book. Instead of taking the book home, the librarian gives you a special ticket number that represents your book. Every time you want to read it, you just show the librarian the ticket, and they bring you the book. When you’re done, you return the book, and the librarian takes back the ticket.
+
+Now, think of a computer as a giant library, where files, programs, and other resources are like books. The file descriptor is the "ticket number" that the computer gives you when you open a file.
+
+When a program wants to read or write a file, it asks the operating system (like the librarian) to open it. The operating system then:
+
+1. Finds the file you want.
+2. Assigns a number (the file descriptor) to track it.
+3. Gives that number to your program so it can use the file.
+4. For example, let’s say you open a file called "notes.txt". The computer might say:
+
+"Here is file descriptor 3—use this number to read or write your file."
+
+Now, your program doesn’t need to worry about where the file is stored. It just tells the computer, "Hey, read from file descriptor 3!"
+
+#### `**Special File Descriptors Already in Every Program**`
+
+Even if you don’t open any files, every running program already has three file descriptors assigned by default:
+
+0		- Standard Input (stdin) – This is where the program gets input (like from your keyboard).
+
+1		- Standard Output (stdout) – This is where the program prints messages (like your screen).
+
+2		- Standard Error (stderr) – This is where error messages are shown.
+
+Think of a movie theater:
+
+- The screen is like stdout (1)—it shows you the movie.
+
+- The microphone for questions is like stdin (0)—you can talk into it.
+
+- The emergency speaker is like stderr (2)—it’s only used when something goes wrong.
+
+Once you’re done using a file, you must close it—just like returning a book to the library. Otherwise, the system might run out of "tickets" (file descriptors) and stop working properly.
+
+So, a program usually follows these steps:
+
+1. Open a file (get a file descriptor). (check out the function open());
+
+2. Read or write using that file descriptor. (check out the functions read() and write());
+
+3. Close the file (return the file descriptor to the system). (gess what?? yes, function close());
+
+So, long story short, File descriptors are just numbers that the computer uses to track open files. They help programs communicate with files, keyboards, screens, and even networks. Even though you don’t see them directly, file descriptors are working behind the scenes every time you open a file, run a program, or browse the internet!
+
 ## Allocating memory (and freeing it)
 
 ## Linked lists

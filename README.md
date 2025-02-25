@@ -250,4 +250,65 @@ So, long story short, File descriptors are just numbers that the computer uses t
 
 ## Allocating memory (and freeing it)
 
+In most programming languages, memory management is handled automatically through garbage collection (e.g., Python, Java). However, in C, memory management is manual — programmers must explicitly allocate and deallocate memory, and this is where malloc() and free() come into play.
+
+Memory is not an infinite resource. Poor memory management can lead to excessive memory usage, slow performance, or even crashes. Understanding how to allocate and free memory properly is an essential skill for C programmers.
+
+### **Memory layout in a running program**
+
+To understand `malloc()` and `free()`, we first need to look at how memory is organized when a program runs. It is typically structured like this:
+
+```pgsql
+
++------------------------+ High Memory Addresses
+|        Stack          |  (Grows downward)
+|------------------------|
+|       Heap           |  (Grows upward)
+|------------------------|
+|  Uninitialized Data  |  (.bss segment)
+|------------------------|
+|  Initialized Data    |  (.data segment)
+|------------------------|
+|       Code          |  (.text segment, Executable Instructions)
++------------------------+ Low Memory Addresses
+
+```
+
+- Code segment: this is where it is stored the executable code (the machine instructions);
+
+-  Initialized data segment: this is where all our global and static variables are initialized at compile time.
+
+-  Uninitialized data segment: stores global and static variables that are not initialized.
+
+-  Heap: this section is used for **dynamic memory allocation** for functions like `malloc()`, `realloc()` and `free()`.
+
+-  Stack: stores function call frames. Memory is automatically allocated when a function is called and freed when it returns. Excessive function calls without returning can cause stack overflow, crashing the program.
+
+### **how `malloc()` and `free()` work**
+
+Let's take this piece of code for an example:
+
+```c
+int *ptr = (int *)malloc(4 * sizeof(int));
+```
+
+What does malloc() do here?
+
+1. It asks the heap allocator for a block of memory large enough to hold 4 integers.
+2. It marks this memory as in use and returns a pointer to the allocated block.
+3. The memory is not initialized—it contains garbage values until assigned.
+
+To free this memory, we call:
+
+```c
+int *ptr = (int *)malloc(4 * sizeof(int));
+free(ptr);
+```
+
+Now, if we free the pointer, the heap allocator marks the memory block as "free", allowing it to be reused later. free() does not shrink the heap, it only marks memory as reusable.If you forget to call free(), the allocated memory remains reserved, leading to memory leaks. Over time, this can cause your program to use excessive memory. To check leaks, you can use the tool `Valgrind`.
+
+```sh
+valgrind ./your_program
+```
+
 ## Linked lists
